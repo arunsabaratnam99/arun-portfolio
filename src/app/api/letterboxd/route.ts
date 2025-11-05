@@ -63,9 +63,13 @@ export async function GET() {
 
       if (titleMatch && yearMatch && linkMatch && pubDateMatch) {
         const rating = ratingMatch ? `${ratingMatch[1]}★` : undefined;
+        const filmTitle = titleMatch[1];
+        const filmYear = yearMatch[1];
+
+        console.log(`Film: ${filmTitle} (${filmYear}), Image: ${imageUrl}`);
 
         items.push({
-          title: `${titleMatch[1]} (${yearMatch[1]})`,
+          title: `${filmTitle} (${filmYear})`,
           link: linkMatch[1],
           pubDate: new Date(pubDateMatch[1]).toLocaleDateString("en-US", {
             month: "short",
@@ -73,8 +77,8 @@ export async function GET() {
             year: "numeric",
           }),
           rating,
-          filmTitle: titleMatch[1],
-          filmYear: yearMatch[1],
+          filmTitle,
+          filmYear,
           image: imageUrl || undefined,
         });
       }

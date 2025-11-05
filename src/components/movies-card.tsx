@@ -14,6 +14,7 @@ export function MoviesCard() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [hoveredMovie, setHoveredMovie] = useState<number | null>(null);
+  const [timestamp] = useState(() => Date.now());
 
   useEffect(() => {
     async function fetchMovies() {
@@ -21,7 +22,9 @@ export function MoviesCard() {
         const response = await fetch("/api/letterboxd");
         if (response.ok) {
           const data = await response.json();
-          setMovies(data.slice(0, 4)); // Show only 4 movies
+          const movieData = data.slice(0, 4);
+          console.log("Movies data:", movieData.map((m: Movie) => ({ title: m.title, image: m.image })));
+          setMovies(movieData); // Show only 4 movies
         }
       } catch (error) {
         console.error("Error fetching movies:", error);
@@ -67,19 +70,22 @@ export function MoviesCard() {
                 onMouseLeave={() => setHoveredMovie(null)}
               >
                 {movie.image && (
-                  <img
-                    src={`/api/image-proxy?url=${encodeURIComponent(movie.image)}`}
-                    alt={movie.title}
-                    width="48"
-                    height="64"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-12 h-16 object-cover rounded transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg flex-shrink-0"
-                    onError={(e) => {
-                      // Hide if image fails to load
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
+                  <div className="w-12 h-16 overflow-hidden rounded flex-shrink-0">
+                    <img
+                      key={`${movie.title}-${idx}`}
+                      src={`/api/image-proxy?url=${encodeURIComponent(movie.image)}&t=${timestamp}&id=${idx}`}
+                      alt={movie.title}
+                      width="48"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                      onError={(e) => {
+                        // Hide if image fails to load
+                        (e.target as HTMLImageElement).style.display = "none";
+                      }}
+                    />
+                  </div>
                 )}
                 <div className="flex flex-col min-w-0 flex-1">
                   <div className="font-geist-mono text-xs text-white group-hover:underline truncate">
@@ -96,12 +102,12 @@ export function MoviesCard() {
                 </div>
               </a>
               {hoveredMovie === idx && (
-                <div className={`hidden md:block absolute left-0 bg-neutral-800 text-white text-xs px-2 py-1 rounded z-50 pointer-events-none border border-neutral-700 animate-in fade-in duration-200 max-w-[90%] truncate ${
+                <div className={`hidden md:block absolute left-0 bg-neutral-800 text-white text-xs px-2 py-1 rounded z-50 pointer-events-none border border-neutral-700 animate-in fade-in duration-200 whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px] ${
                   idx === 0
                     ? "top-full mt-2 slide-in-from-top-1"
                     : "bottom-full mb-2 slide-in-from-bottom-1"
                 }`}>
-                  Open {movie.title} review
+                  Open review
                 </div>
               )}
             </div>
