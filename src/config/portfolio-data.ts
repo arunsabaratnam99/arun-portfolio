@@ -13,8 +13,8 @@ export const portfolioData = {
   // ============================================
   personal: {
     name: "ARUN SABARATNAM", // Your full name (displayed in hero section)
-    tagline: "Computer Science Student at the University of Ottawa", // Main tagline
-    subtitle: "Building innovative software solutions and exploring new technologies", // Optional subtitle
+    tagline: "Software ENgineering Student at the University of Ottawa", // Main tagline
+    subtitle: "building stuff", // Optional subtitle
     location: "Ottawa, ON", // Your city/location (shown in clock and map)
     email: "asaba059@uottawa.ca", // Your email address
     timezone: "America/Toronto", // IANA timezone for live clock (e.g., "America/New_York", "Europe/London")
@@ -64,14 +64,14 @@ export const portfolioData = {
       company: "Statistics Canada",
       url: "https://www.statcan.gc.ca",
       period: "May 2025 - Sep 2025",
-      companyDomain: "canada.ca", // Use canada.ca for Gov of Canada logo
+      companyDomain: "canada.ca", 
     },
     {
       title: "Full-Stack Developer Intern",
       company: "Department of National Defence",
       url: "https://www.canada.ca/en/department-national-defence.html",
       period: "Sep 2024 - Jan 2025",
-      companyDomain: "canada.ca", // Use canada.ca for Gov of Canada logo
+      companyDomain: "canada.ca",
     },
     {
       title: "Data Analyst Intern",
@@ -94,10 +94,10 @@ export const portfolioData = {
   // ============================================
   // Each line becomes a bullet point in the About section
   about: [
-    "i'm interested in software development and building innovative solutions",
-    "i enjoy watching movies and exploring film",
+    "i'm interested in software development and building new solutions",
+    "i enjoy watching movies and tv shows",
     "i like to work on coding projects and learn new technologies",
-    "i study computer science at the university of ottawa",
+    "i study software engineering at the university of ottawa",
   ],
 
   // ============================================
