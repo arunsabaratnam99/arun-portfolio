@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
     console.log("Fetching logo from Brandfetch CDN for:", domain);
 
     // Get client ID from environment or use from query
-    const clientId = process.env.BRANDFETCH_API_KEY || "";
+    const clientId = "1idbneFKIdm3gLp_kJd";
 
     // Use Brandfetch's CDN Logo API with size and client ID parameters
     // Format: https://cdn.brandfetch.io/{domain}/w/{width}/h/{height}?c={client_id}
