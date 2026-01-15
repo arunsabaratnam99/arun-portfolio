@@ -8,8 +8,9 @@ export function ExperienceCard() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
 
   const getCompanyLogo = (domain: string) => {
-    // Use Clearbit API for company logos with size parameter for better quality
-    return `https://logo.clearbit.com/${domain}?size=256`;
+    // Use Next.js image proxy to fetch company logos from Clearbit
+    const clearbitUrl = `https://logo.clearbit.com/${domain}?size=256`;
+    return `/api/image-proxy?url=${encodeURIComponent(clearbitUrl)}`;
   };
 
   return (
