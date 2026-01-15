@@ -6,6 +6,7 @@ import { portfolioData } from "@/config/portfolio-data";
 export function ExperienceCard() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
   const [failedLogos, setFailedLogos] = useState<Set<number>>(new Set());
+  const [failedLogos, setFailedLogos] = useState<Set<number>>(new Set());
 
   const getCompanyInitial = (company: string) => {
     return company.charAt(0).toUpperCase();
@@ -70,22 +71,23 @@ export function ExperienceCard() {
                 </div>
               )}
 
-              <div className="flex flex-col">
-                <div className="text-sm font-geist-mono group-hover:underline group-hover:decoration-white">
-                  {exp.title}
+                <div className="flex flex-col">
+                  <div className="text-sm font-geist-mono group-hover:underline group-hover:decoration-white">
+                    {exp.title}
+                  </div>
+                  <div className="text-sm font-geist text-neutral-400">
+                    {exp.company} · {exp.period}
+                  </div>
                 </div>
-                <div className="text-sm font-geist text-neutral-400">
-                  {exp.company} · {exp.period}
+              </a>
+              {hoveredExp === idx && (
+                <div className="absolute left-0 bottom-full mb-2 bg-neutral-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50 pointer-events-none border border-neutral-700 animate-in fade-in slide-in-from-bottom-1 duration-200">
+                  Open {exp.company} Website
                 </div>
-              </div>
-            </a>
-            {hoveredExp === idx && (
-              <div className="absolute left-0 bottom-full mb-2 bg-neutral-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50 pointer-events-none border border-neutral-700 animate-in fade-in slide-in-from-bottom-1 duration-200">
-                Open {exp.company} Website
-              </div>
-            )}
-          </div>
-        ))}
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
