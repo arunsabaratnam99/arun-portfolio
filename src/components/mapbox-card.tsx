@@ -6,7 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { portfolioData } from "@/config/portfolio-data";
 
 // Set Mapbox access token
-mapboxgl.accessToken = "pk.eyJ1IjoiYXJ1bnNhYmFyYXRuYW0iLCJhIjoiY21obGJ0Y3ozMWF3NDJqbzhseGI2YnFsaiJ9.-hcJPtpQ-IfRVQ76ky6FKQ";
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;;
 
 export function MapboxCard() {
   const mapContainer = useRef<HTMLDivElement>(null);
