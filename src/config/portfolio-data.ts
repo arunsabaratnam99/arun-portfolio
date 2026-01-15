@@ -50,42 +50,43 @@ export const portfolioData = {
   // WORK EXPERIENCE
   // ============================================
   // Add or remove entries as needed. Most recent should be first.
-  // Company logos will be fetched from Clearbit API automatically
+  // Company logos are fetched from Brandfetch API
+  // Add domain field for logo fetching (e.g., "scotiabank.com")
   experience: [
     {
       title: "Software Engineer Intern",
       company: "Scotiabank",
       url: "https://www.scotiabank.com/",
       period: "Jan 2026 - Present",
-      companyDomain: "scotiabank.com",
+      domain: "scotiabank.com",
     },
     {
       title: "AI Software Developer Intern",
       company: "Statistics Canada",
       url: "https://www.statcan.gc.ca",
       period: "May 2025 - Sep 2025",
-      companyDomain: "canada.ca", 
+      domain: "canada.ca",
     },
     {
       title: "Full-Stack Developer Intern",
       company: "Department of National Defence",
       url: "https://www.canada.ca/en/department-national-defence.html",
       period: "Sep 2024 - Jan 2025",
-      companyDomain: "canada.ca",
+      domain: "canada.ca",
     },
     {
       title: "Data Analyst Intern",
       company: "MindBridge AI",
       url: "https://www.mindbridge.ai",
       period: "Jan 2024 - May 2024",
-      companyDomain: "mindbridge.ai",
+      domain: "mindbridge.ai",
     },
     {
       title: "Software Developer Intern",
       company: "Payments Canada",
       url: "https://www.payments.ca",
       period: "May 2023 - Sep 2023",
-      companyDomain: "payments.ca",
+      domain: "payments.ca",
     },
   ],
 

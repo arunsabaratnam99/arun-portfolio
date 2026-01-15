@@ -5,6 +5,7 @@ import { portfolioData } from "@/config/portfolio-data";
 
 export function ExperienceCard() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
+  const [failedLogos, setFailedLogos] = useState<Set<number>>(new Set());
 
   const getCompanyInitial = (company: string) => {
     return company.charAt(0).toUpperCase();
@@ -24,6 +25,14 @@ export function ExperienceCard() {
     return colors[index % colors.length];
   };
 
+  const getLogoUrl = (domain: string) => {
+    return `/api/brandfetch?domain=${encodeURIComponent(domain)}`;
+  };
+
+  const handleImageError = (idx: number) => {
+    setFailedLogos((prev) => new Set(prev).add(idx));
+  };
+
   return (
     <div className="bg-neutral-900 p-4 h-full rounded-lg flex flex-col text-white transform transition-transform duration-300 hover:scale-[1.02]">
       <div className="font-bold font-geist-mono uppercase">Co-op</div>
@@ -39,16 +48,27 @@ export function ExperienceCard() {
               onMouseEnter={() => setHoveredExp(idx)}
               onMouseLeave={() => setHoveredExp(null)}
             >
-              {/* Company Initial Badge */}
-              <div
-                className={`flex-shrink-0 w-10 h-10 rounded-lg ${getCompanyColor(
-                  idx
-                )} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg`}
-              >
-                <span className="text-white font-bold text-lg">
-                  {getCompanyInitial(exp.company)}
-                </span>
-              </div>
+              {/* Company Logo or Badge */}
+              {!failedLogos.has(idx) && exp.domain ? (
+                <img
+                  src={getLogoUrl(exp.domain)}
+                  alt={`${exp.company} logo`}
+                  width="40"
+                  height="40"
+                  className="flex-shrink-0 w-10 h-10 rounded-lg bg-white p-2 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                  onError={() => handleImageError(idx)}
+                />
+              ) : (
+                <div
+                  className={`flex-shrink-0 w-10 h-10 rounded-lg ${getCompanyColor(
+                    idx
+                  )} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg`}
+                >
+                  <span className="text-white font-bold text-lg">
+                    {getCompanyInitial(exp.company)}
+                  </span>
+                </div>
+              )}
 
               <div className="flex flex-col">
                 <div className="text-sm font-geist-mono group-hover:underline group-hover:decoration-white">

@@ -10,7 +10,32 @@ This makes it incredibly easy to update your information without touching any co
 
 ---
 
-## 🔌 **DYNAMIC FEATURES**
+## � **API KEYS & ENVIRONMENT VARIABLES**
+
+Some features require API keys for full functionality. Create a `.env.local` file in the root directory:
+
+### Optional: Brandfetch API Key (Recommended)
+
+For better company logo loading:
+
+1. Go to [Brandfetch.com](https://brandfetch.com/)
+2. Sign up for a free account
+3. Get your API key from the dashboard
+4. Add to `.env.local`:
+
+```bash
+BRANDFETCH_API_KEY=your_api_key_here
+```
+
+**Note**: Without an API key, the site will gracefully fall back to colorful initial badges. The free Brandfetch tier may have rate limits.
+
+### Other API Keys
+
+For GitHub and Letterboxd integrations, no API keys are needed - they use public RSS feeds and APIs.
+
+---
+
+## �🔌 **DYNAMIC FEATURES**
 
 Your portfolio now includes several **automatic integrations** that pull live data:
 
@@ -27,9 +52,9 @@ Your portfolio now includes several **automatic integrations** that pull live da
 - **Setup**: Just add your GitHub username in the config file
 
 ### 🏢 Company Logos
-- **Automatically fetches** company logos from Clearbit
-- Displays logos next to your work experience
-- Falls back to company initials if logo not found
+- **Automatically fetches** company logos from Brandfetch API
+- Falls back to colorful initial badges if logo not found
+- Clean, professional design with actual brand logos
 - **Setup**: Add company domain (e.g., "google.com") in the config
 
 ---
@@ -98,7 +123,7 @@ experience: [
     company: "Tech Company",                // Company name
     url: "https://example.com",            // Company website
     period: "Summer 2025",                 // Time period
-    companyDomain: "example.com",          // 🔌 For auto logo fetching
+    domain: "example.com",                 // 🔌 For logo fetching from Brandfetch
   },
   // Add more experiences...
 ]
@@ -108,8 +133,9 @@ experience: [
 
 **Company Logo Tips**:
 - Use the root domain (e.g., "google.com" not "www.google.com")
-- Logos are fetched from Clearbit automatically
-- If logo not found, shows company initial (e.g., "G" for Google)
+- Logos are fetched from Brandfetch API automatically
+- If logo not found, shows colorful initial badge as fallback
+- Logos are cached for 24 hours for better performance
 
 ---
 
@@ -251,8 +277,9 @@ The map uses CartoDB Dark Matter style. To change:
 
 **Company logos not loading?**
 - Verify the domain is correct (e.g., "google.com")
-- Some companies may not have logos in Clearbit
-- The fallback (first letter) will show instead
+- Some companies may not be in Brandfetch database
+- A colorful initial badge will show as fallback
+- Logos are cached for 24 hours
 
 **Clock not updating?**
 - Check that your timezone format is correct
