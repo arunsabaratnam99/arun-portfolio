@@ -53,14 +53,14 @@ export const portfolioData = {
   // Company logos will be fetched from Clearbit API automatically
   experience: [
     {
-      title: "Software Developer Intern",
-      company: "General Dynamics",
-      url: "https://www.gd.com",
-      period: "Incoming Winter 2026",
-      companyDomain: "gd.com",
+      title: "Software Engineer Intern",
+      company: "Scotiabank",
+      url: "https://www.scotiabank.com/",
+      period: "Jan 2026 - Present",
+      companyDomain: "scotiabank.com",
     },
     {
-      title: "Cloud Developer Intern",
+      title: "AI Software Developer Intern",
       company: "Statistics Canada",
       url: "https://www.statcan.gc.ca",
       period: "May 2025 - Sep 2025",
