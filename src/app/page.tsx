@@ -1,6 +1,7 @@
 "use client";
 
 import { portfolioData } from "@/config/portfolio-data";
+import { settings } from "@/config/settings";
 import { HeroSection } from "@/components/hero-section";
 import { ExperienceCard } from "@/components/experience-card";
 import { GithubCard } from "@/components/github-card";
@@ -41,13 +42,15 @@ export default function Home() {
             <MapboxCard />
           </div>
 
-          {/* GitHub Card - 1 column, row 2 */}
-          <div className="md:col-start-1 md:col-span-1 md:row-start-2">
-            <GithubCard />
-          </div>
+          {/* GitHub Card - 1 column, row 2 - Conditionally shown */}
+          {settings.showGithub && (
+            <div className="md:col-start-1 md:col-span-1 md:row-start-2">
+              <GithubCard />
+            </div>
+          )}
 
-          {/* LeetCode Card - 1 column, row 2 */}
-          <div className="md:col-start-2 md:col-span-1 md:row-start-2">
+          {/* LeetCode Card - Expands to 2 columns when GitHub is hidden */}
+          <div className={`md:row-start-2 ${settings.showGithub ? 'md:col-start-2 md:col-span-1' : 'md:col-start-1 md:col-span-2'}`}>
             <LeetCodeCard />
           </div>
 

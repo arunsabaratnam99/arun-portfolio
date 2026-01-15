@@ -6,7 +6,6 @@ import { portfolioData } from "@/config/portfolio-data";
 export function ExperienceCard() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
   const [failedLogos, setFailedLogos] = useState<Set<number>>(new Set());
-  const [failedLogos, setFailedLogos] = useState<Set<number>>(new Set());
 
   const getCompanyInitial = (company: string) => {
     return company.charAt(0).toUpperCase();
@@ -27,7 +26,7 @@ export function ExperienceCard() {
   };
 
   const getLogoUrl = (domain: string) => {
-    return `/api/brandfetch?domain=${encodeURIComponent(domain)}`;
+    return `https://cdn.brandfetch.io/${domain}/w/400/h/400?c=${process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID}`;
   };
 
   const handleImageError = (idx: number) => {
@@ -56,7 +55,7 @@ export function ExperienceCard() {
                   alt={`${exp.company} logo`}
                   width="40"
                   height="40"
-                  className="flex-shrink-0 w-10 h-10 rounded-lg bg-white p-2 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                  className="flex-shrink-0 w-10 h-10 rounded-lg bg-white object-cover transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
                   onError={() => handleImageError(idx)}
                 />
               ) : (
@@ -85,9 +84,8 @@ export function ExperienceCard() {
                 Open {exp.company} Website
               </div>
             )}
-            </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
