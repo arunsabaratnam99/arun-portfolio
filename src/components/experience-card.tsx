@@ -2,15 +2,26 @@
 
 import { useState } from "react";
 import { portfolioData } from "@/config/portfolio-data";
-import Image from "next/image";
 
 export function ExperienceCard() {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
 
-  const getCompanyLogo = (domain: string) => {
-    // Use Next.js image proxy to fetch company logos from Clearbit
-    const clearbitUrl = `https://logo.clearbit.com/${domain}?size=256`;
-    return `/api/image-proxy?url=${encodeURIComponent(clearbitUrl)}`;
+  const getCompanyInitial = (company: string) => {
+    return company.charAt(0).toUpperCase();
+  };
+
+  const getCompanyColor = (index: number) => {
+    const colors = [
+      "bg-red-500",
+      "bg-blue-500",
+      "bg-green-500",
+      "bg-purple-500",
+      "bg-yellow-500",
+      "bg-pink-500",
+      "bg-indigo-500",
+      "bg-orange-500",
+    ];
+    return colors[index % colors.length];
   };
 
   return (
@@ -28,27 +39,16 @@ export function ExperienceCard() {
               onMouseEnter={() => setHoveredExp(idx)}
               onMouseLeave={() => setHoveredExp(null)}
             >
-              {/* Company Logo */}
-              <img
-                src={getCompanyLogo(exp.companyDomain)}
-                alt={`${exp.company} logo`}
-                width="40"
-                height="40"
-                loading="lazy"
-                decoding="async"
-                className="flex-shrink-0 w-10 h-10 rounded-lg bg-white p-1.5 xl:p-[0px] object-fill transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                onError={(e) => {
-                  // Fallback: Show first letter of company name
-                  const target = e.target as HTMLImageElement;
-                  const wrapper = document.createElement("div");
-                  wrapper.className =
-                    "flex-shrink-0 w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg";
-                  wrapper.innerHTML = `<span class="text-white font-bold text-sm">${exp.company.charAt(
-                    0
-                  )}</span>`;
-                  target.parentElement?.replaceChild(wrapper, target);
-                }}
-              />
+              {/* Company Initial Badge */}
+              <div
+                className={`flex-shrink-0 w-10 h-10 rounded-lg ${getCompanyColor(
+                  idx
+                )} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg`}
+              >
+                <span className="text-white font-bold text-lg">
+                  {getCompanyInitial(exp.company)}
+                </span>
+              </div>
 
               <div className="flex flex-col">
                 <div className="text-sm font-geist-mono group-hover:underline group-hover:decoration-white">
