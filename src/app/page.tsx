@@ -10,6 +10,7 @@ import { MoviesCard } from "@/components/movies-card";
 import { ClockCard } from "@/components/clock-card";
 import { AboutCard } from "@/components/about-card";
 import { MapboxCard } from "@/components/mapbox-card";
+import { ProjectsCard } from "@/components/projects-card";
 
 export default function Home() {
   return (
@@ -59,6 +60,11 @@ export default function Home() {
             <AboutCard />
           </div>
         </div>
+      </div>
+
+      {/* Projects Section - Full width below bento grid */}
+      <div className="w-full pb-5">
+        <ProjectsCard />
       </div>
     </div>
   );

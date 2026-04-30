@@ -102,6 +102,47 @@ export const portfolioData = {
   ],
 
   // ============================================
+  // PROJECTS
+  // ============================================
+  // Add your projects here. Each project can have:
+  // - title: Project name
+  // - description: Brief description
+  // - techStack: Array of technologies used
+  // - github: (optional) GitHub repo URL
+  // - liveUrl: (optional) Live demo URL
+  // - image: (optional) Screenshot/thumbnail URL
+  // - gradient: (optional) Custom gradient if no image (e.g., "bg-gradient-to-br from-blue-600/20 to-purple-600/20")
+  projects: [
+    {
+      title: "What The Tech",
+      description: "AI-powered web app that extracts GitHub repository context into explorable knowledge hubs. Built at uOttaHack 8.",
+      techStack: ["Next.js", "TypeScript", "React", "Supabase", "Gemini AI", "shadcn/ui", "TailwindCSS"],
+      github: "https://github.com/arunsabaratnam99/what_the_tech_uottahack8",
+      liveUrl: "https://what-the-tech-uottahack8.vercel.app/",
+      image: "/what-the-tech.jpg",
+      gradient: "bg-gradient-to-br from-purple-600/20 to-pink-600/20",
+    },
+    {
+      title: "Fordward",
+      description: "Flutter mobile app for Ford EV drivers to find nearby charging stations with real-time availability and route optimization. Built at uOttaHack 6.",
+      techStack: ["Flutter", "Dart", "Firebase", "Google Maps API", "Python", "Flask"],
+      github: "https://github.com/KYLEKHAI/fordward",
+      image: "/fordward.png",
+      gradient: "bg-gradient-to-br from-blue-600/20 to-indigo-600/20",
+    },
+    {
+      title: "ApplyMe",
+      description: "Job application automation platform that aggregates jobs from LinkedIn, Indeed, and more, with smart autofill and application tracking.",
+      techStack: ["TypeScript", "React", "Cloudflare Workers", "PostgreSQL", "OAuth", "Browser Extension"],
+      github: "https://github.com/arunsabaratnam99/applyme",
+      liveUrl: "https://aapplyme.netlify.app",
+      image: "/applyme.png",
+      gradient: "bg-gradient-to-br from-green-600/20 to-teal-600/20",
+    },
+    // Add more projects below...
+  ],
+
+  // ============================================
   // MAP CONFIGURATION
   // ============================================
   // Set your location coordinates for the interactive map

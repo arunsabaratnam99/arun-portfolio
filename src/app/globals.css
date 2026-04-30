@@ -45,3 +45,10 @@
 .mapboxgl-map {
   font-family: 'Inter', sans-serif;
 }
+
+/* Fix text decoration issues on transitions */
+h3, .no-underline {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  -webkit-text-decoration: none !important;
+}
