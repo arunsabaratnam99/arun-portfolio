@@ -14,13 +14,13 @@ export function HeroSection() {
         <ShaderBackground />
 
         {/* Content Overlay */}
-        <div className="absolute inset-0 z-10 flex items-start justify-start p-4">
-          <div className="flex flex-col w-full h-full justify-between">
+        <div className="absolute inset-0 z-10 flex items-start justify-start p-4 xl:p-8">
+          <div className="flex flex-col w-full max-w-[1400px] h-full justify-between">
             <div>
-              <h1 className="text-white font-extrabold uppercase font-geist-mono text-4xl md:text-8xl">
+              <h1 className="text-white font-extrabold uppercase font-geist-mono text-4xl md:text-7xl xl:text-8xl">
                 {portfolioData.personal.name}
               </h1>
-              <h2 className="font-geist-mono text-xl md:text-2xl lowercase text-white">
+              <h2 className="font-geist-mono text-xl md:text-2xl xl:text-2xl lowercase text-white mt-2">
                 {portfolioData.personal.tagline}
                 {portfolioData.personal.subtitle && (
                   <>
